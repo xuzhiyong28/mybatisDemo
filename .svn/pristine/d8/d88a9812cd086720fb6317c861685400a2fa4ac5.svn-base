@@ -1,0 +1,49 @@
+import com.xzy.mybatis.service.Impl.ActiveMqDemoConsumerServiceImpl;
+import com.xzy.mybatis.service.Impl.ActiveMqDemoProducerServiceImpl;
+import org.apache.log4j.Logger;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+
+/**
+ * Created by Administrator on 2017/6/8.
+ */
+@RunWith(SpringJUnit4ClassRunner.class)     //表示继承了SpringJUnit4ClassRunner类
+@ContextConfiguration(locations = { "classpath:spring-mybatis.xml","classpath:spring-redis.xml" ,"classpath:spring-activemq.xml" })
+public class ActiveMqTest {
+    private static Logger logger = Logger.getLogger(ActiveMqTest.class);
+    @Resource
+    private ActiveMqDemoProducerServiceImpl activeMqDemoProducerService;
+
+    @Resource
+    private ActiveMqDemoConsumerServiceImpl activeMqDemoConsumerService;
+
+    @Resource(name="queueDestination")
+    private Destination receiveQueue;
+
+    private JmsTemplate jmsTemplate;
+
+    @Test
+    public void producerTest(){
+        for(int i = 0 ; i < 10 ; i++)
+            activeMqDemoProducerService.sendMessage(receiveQueue,"my name is chhliu!");
+    }
+
+    @Resource(name="responseQueue")
+    private Destination replyQueue; //回复队列，这个可以让发送消息的队列获取到
+    @Test
+    public void consumerTest(){
+        activeMqDemoConsumerService.receiveMessage(receiveQueue, replyQueue);
+    }
+
+    @Test
+    public void jmsTemplateTest(){
+    }
+
+
+}

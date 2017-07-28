@@ -1,0 +1,7 @@
+D:\ITSOFT\workpace3\mybatisDemo\src\main\java\com\xzy\mybatis\model\User.java
+D:\ITSOFT\workpace3\mybatisDemo\src\main\java\com\xzy\mybatis\util\redis\SerializeUtil.java
+D:\ITSOFT\workpace3\mybatisDemo\src\main\java\com\xzy\mybatis\service\IUserService.java
+D:\ITSOFT\workpace3\mybatisDemo\src\main\java\com\xzy\mybatis\service\Impl\RedisServiceImpl.java
+D:\ITSOFT\workpace3\mybatisDemo\src\main\java\com\xzy\mybatis\dao\UserDao.java
+D:\ITSOFT\workpace3\mybatisDemo\src\main\java\com\xzy\mybatis\util\redis\AbstractBaseRedisDao.java
+D:\ITSOFT\workpace3\mybatisDemo\src\main\java\com\xzy\mybatis\service\Impl\IUserServiceImpl.java
